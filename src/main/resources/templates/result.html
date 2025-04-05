@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>通知中</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.7/push.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/notification.js}"></script>
+</head>
+<body>
+
+<h1>定期的に通知されるよ</h1>
+<div class="result-container" th:if="${result}">
+    <h2>Result:</h2>
+    <p th:text="'対象スレ ' + ${url}"></p>
+    <p th:text="'対象スレが落ちるのは ' + ${result}" class="highlight"></p>
+    <p id="result" th:text="${result}" style="display:none;"></p>
+</div>
+<div th:if="${email}">
+    <p th:text="'メールアドレス ' + ${email} + 'に定期的に通知するよ'"></p>
+</div>
+<script th:inline="javascript">
+    const embeddedUrl = /*[[${url}]]*/ 'defaultUrl';
+    const result = /*[[${result}]]*/ 'defaultResult';
+    const email = /*[[${email}]]*/ 'defaultEmail@example.com';
+</script>
+</body>
+</html>

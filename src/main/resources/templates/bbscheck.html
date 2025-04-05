@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>掲示板チェッカー</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>掲示板チェッカー</h1>
+<div th:if="${result}">
+    <p th:text="${result}"></p>
+</div>
+<form th:action="@{/api/push/fetch-html-insert}" method="post">
+    <label for="url">監視したい掲示板 URL:</label>
+    <input type="text" id="url" name="url" required><br>
+
+    <label for="email">通知を送る Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+    <button type="submit">監視開始！</button>
+</form>
+</body>
+</html>
